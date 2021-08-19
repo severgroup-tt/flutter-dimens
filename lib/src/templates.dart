@@ -50,7 +50,7 @@ String generateApiClass({
       bool updateShouldNotify(InheritedWidget oldWidget) => false;
       
       @override
-      TextTheme? get textTheme => _proxy.value.textTheme;
+      TextTheme get textTheme => _proxy.value.textTheme;
     
       ${_buildProxySection(textStyleDeclarations, sizeDeclarations)}
     }
@@ -150,7 +150,7 @@ String _buildSizeDeclarations(
 }) =>
     styles.entries.where((element) => element.value is double).map((e) => _mapSizeEntryToPropertyDeclaration(e, isOverride: isOverride)).join("\n");
 
-String _mapStyleEntryToProxyCall(MapEntry<String, dynamic> e) => "@override TextStyle get ${e.key} => _proxy.value.${e.key};";
+String _mapStyleEntryToProxyCall(MapEntry<String, dynamic> e) => "@override TextStyle? get ${e.key} => _proxy.value.${e.key};";
 
 String _mapSizeEntryToProxyCall(MapEntry<String, dynamic> e) => "@override double get ${e.key} => _proxy.value.${e.key};";
 

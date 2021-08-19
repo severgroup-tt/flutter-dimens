@@ -50,7 +50,7 @@ String generateApiClass({
       bool updateShouldNotify(InheritedWidget oldWidget) => false;
       
       @override
-      TextTheme get textTheme => _proxy.value.textTheme;
+      TextTheme? get textTheme => _proxy.value.textTheme;
     
       ${_buildProxySection(textStyleDeclarations, sizeDeclarations)}
     }
@@ -154,6 +154,6 @@ String _mapStyleEntryToProxyCall(MapEntry<String, dynamic> e) => "@override Text
 
 String _mapSizeEntryToProxyCall(MapEntry<String, dynamic> e) => "@override double get ${e.key} => _proxy.value.${e.key};";
 
-String _mapStyleEntryToPropertyDeclaration(MapEntry<String, dynamic> e, {required bool isOverride}) => "${isOverride ? "@override" : ""} TextStyle get ${e.key} => textTheme.${e.value};";
+String _mapStyleEntryToPropertyDeclaration(MapEntry<String, dynamic> e, {required bool isOverride}) => "${isOverride ? "@override" : ""} TextStyle? get ${e.key} => textTheme.${e.value};";
 
 String _mapSizeEntryToPropertyDeclaration(MapEntry<String, dynamic> e, {required bool isOverride}) => "${isOverride ? "@override" : ""} final double ${e.key} = ${e.value};";

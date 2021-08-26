@@ -150,10 +150,10 @@ String _buildSizeDeclarations(
 }) =>
     styles.entries.where((element) => element.value is double).map((e) => _mapSizeEntryToPropertyDeclaration(e, isOverride: isOverride)).join("\n");
 
-String _mapStyleEntryToProxyCall(MapEntry<String, dynamic> e) => "@override TextStyle get ${e.key} => _proxy.value.${e.key};";
+String _mapStyleEntryToProxyCall(MapEntry<String, dynamic> e) => "@override TextStyle? get ${e.key} => _proxy.value.${e.key};";
 
 String _mapSizeEntryToProxyCall(MapEntry<String, dynamic> e) => "@override double get ${e.key} => _proxy.value.${e.key};";
 
-String _mapStyleEntryToPropertyDeclaration(MapEntry<String, dynamic> e, {required bool isOverride}) => "${isOverride ? "@override" : ""} TextStyle get ${e.key} => textTheme.${e.value};";
+String _mapStyleEntryToPropertyDeclaration(MapEntry<String, dynamic> e, {required bool isOverride}) => "${isOverride ? "@override" : ""} TextStyle? get ${e.key} => textTheme.${e.value};";
 
 String _mapSizeEntryToPropertyDeclaration(MapEntry<String, dynamic> e, {required bool isOverride}) => "${isOverride ? "@override" : ""} final double ${e.key} = ${e.value};";
